@@ -1,38 +1,45 @@
 package intity;
 
-public class People{
-    private final long id;
-    private final String name;
-    private final double salary;
-    private final int age;
-    private final String image;
+import org.springframework.web.client.RestOperations;
+import org.springframework.web.client.RestTemplate;
 
+import java.io.Serializable;
 
-    public People(long id, String name, double salary, int age, String image) {
-        this.id = id;
-        this.name = name;
-        this.salary = salary;
-        this.age = age;
-        this.image = image;
-    }
+public class People  implements Serializable {
 
-    //Getter and Setters
-    public long getId() {
+    public int getId() {
         return id;
     }
 
-    public String getName() {
-        return name;
+    public String getEmployee_name() {
+        return employee_name;
     }
 
-    public double getSalary() {
-        return salary;
+    public double getEmployee_salary() {
+        return employee_salary;
     }
 
-    public int getAge() {
-        return age;
+    public int getEmployee_age() {
+        return employee_age;
     }
-    public String getImage() {
-        return image;
+
+    public String getProfile_image() {
+        return profile_image;
     }
+
+    private final int  id;
+    private final String employee_name;
+    private final double employee_salary;
+    private final int employee_age;
+    private final String profile_image;
+
+
+    public People(int id, String employee_name,double employee_salary, int employee_age, String profile_image) {
+        this.id = id;
+        this.employee_name = employee_name;
+        this.employee_salary = employee_salary;
+        this.employee_age = employee_age;
+        this.profile_image = profile_image;
+    }
+
 }
