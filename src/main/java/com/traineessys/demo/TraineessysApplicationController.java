@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.function.Function;
 import java.util.function.ToDoubleFunction;
@@ -18,7 +19,7 @@ import java.util.function.ToLongFunction;
 @RestController
 public class TraineessysApplicationController {
 
-    @GetMapping("/report")
+    @GetMapping("/employees/reports/age")
     @ResponseBody
     public People[] listData()
     {
@@ -27,55 +28,25 @@ public class TraineessysApplicationController {
         Gson gson = new Gson();
         People[] userArray = gson.fromJson(dataJson.getPostsAsObject(), People[].class);
 
-        Arrays.sort(userArray, new Sortbyroll());
+        Arrays.sort(userArray , Comparator.comparing(People::getEmployee_age));
+
         return userArray;
 
     }
 
-    class Sortbyroll implements Comparator<People>
+    @GetMapping("/employees/reports/salary")
+    @ResponseBody
+    public People[] listData2()
     {
-        // Used for sorting in ascending order of
-        // roll number
-        public int compare(People a, People b)
-        {
-            return a.getEmployee_age() - b.getEmployee_age();
-        }
+        DataJson dataJson = new DataJson();
 
+        Gson gson = new Gson();
+        People[] userArray = gson.fromJson(dataJson.getPostsAsObject(), People[].class);
 
+        Arrays.sort(userArray , Comparator.comparing(People::getEmployee_salary));
 
-        @Override
-        public Comparator<People> reversed() {
-            return null;
-        }
+        return userArray;
 
-        @Override
-        public Comparator<People> thenComparing(Comparator<? super People> other) {
-            return null;
-        }
-
-        @Override
-        public <U> Comparator<People> thenComparing(Function<? super People, ? extends U> keyExtractor, Comparator<? super U> keyComparator) {
-            return null;
-        }
-
-        @Override
-        public <U extends Comparable<? super U>> Comparator<People> thenComparing(Function<? super People, ? extends U> keyExtractor) {
-            return null;
-        }
-
-        @Override
-        public Comparator<People> thenComparingInt(ToIntFunction<? super People> keyExtractor) {
-            return null;
-        }
-
-        @Override
-        public Comparator<People> thenComparingLong(ToLongFunction<? super People> keyExtractor) {
-            return null;
-        }
-
-        @Override
-        public Comparator<People> thenComparingDouble(ToDoubleFunction<? super People> keyExtractor) {
-            return null;
-        }
     }
+
 }
