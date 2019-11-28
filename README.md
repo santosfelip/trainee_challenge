@@ -81,6 +81,23 @@ public HashMap<String,Object>  ReportSalary(People[] people)
     }
 ````
 
+# Guia de Teste
+
+Para testar a aplicação precisa ter instalado o java SE 8 ou superior em sua máquina, e rodar o projeto Maven. Após iniciar a aplicação, espere até que o projeto baixe todas as dependências. Em seguida, digite no browser a seguinte URL:
+```ruby
+http://localhost:8080/employees/reports/age
+```
+Precisa verificar qual a porta que sua aplicação está rodando, mas a `"8080"` é a padrão. Esse comando deve gerar um relatório do maior e do menor funcionário ordenado pela idade.
+Com o seguinte comando:
+```ruby
+http://localhost:8080/employees/reports/salary
+```
+A aplicação deve retornar um relatório do tipo Json com as informações do maior e do menor funcionário ordenado pelo salário.
+O comando:
+```ruby
+http://localhost:8080/employees/reports/all
+```
+Retorna um relatório com todos os funcionários.
 # Referências
 
 https://sites.google.com/site/gson/gson-user-guide
