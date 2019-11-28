@@ -59,9 +59,9 @@ No controlador da aplicação, a biblioteca é utilizada na seguinte função:
     }
 ```
 
-##Ordenando o Array para mostar o maior e o menor no relatório
+## Ordenando o Array para mostar o maior e o menor no relatório
 
-Para ordenar o Array foi utilizado a função pronta `".Sort"``:
+Para ordenar o Array foi utilizado a função pronta `".Sort"`:
 ```ruby
  Arrays.sort(userArray , Comparator.comparing(People::getEmployee_age));
 ```
