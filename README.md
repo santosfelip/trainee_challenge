@@ -17,8 +17,11 @@ Spring Boot
 ```
     
 # Código
-Para acessar os dados via web no endereço http://dummy.restapiexample.com/api/v1/employees, a aplicação utiliza um `"restTemplate"` na entidade `"DataJson"`, que retorna um Array de Objetos através dos dados obtidos pelo link.
+## Acessando os dados via web
+Para acessar os dados via web no endereço http://dummy.restapiexample.com/api/v1/employees, a aplicação utiliza um `"restTemplate"` na entidade `"DataJson"`, que converte o Json do site em uma String.
 ```ruby
+import org.springframework.web.client.RestTemplate;
+
 public final String getPostsAsObject() {
         String url = "http://dummy.restapiexample.com/api/v1/employees";
 
