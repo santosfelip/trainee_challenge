@@ -14,6 +14,7 @@ sobre funcionários.
 ```ruby
 java 8
 Spring Boot
+Projeto Maven
 ```
     
 # Código
@@ -33,10 +34,10 @@ Após coletar os dados no site, a aplicação utiliza o `"Gson"`, uma biblioteca
 Para utilizá-la é preciso importá-la nas dependências do projeto:
 ```ruby
 <dependency>
-			<groupId>com.google.code.gson</groupId>
-			<artifactId>gson</artifactId>
-			<version>2.8.6</version>
-		</dependency>
+	<groupId>com.google.code.gson</groupId>
+	<artifactId>gson</artifactId>
+	<version>2.8.6</version>
+</dependency>
 ````
 
 No controlador da aplicação, a biblioteca é utilizada na seguinte função:
@@ -57,6 +58,36 @@ No controlador da aplicação, a biblioteca é utilizada na seguinte função:
 
     }
 ```
+
+##Ordenando o Array para mostar o maior e o menor no relatório
+
+Para ordenar o Array foi utilizado a função pronta `".Sort"``:
+```ruby
+ Arrays.sort(userArray , Comparator.comparing(People::getEmployee_age));
+```
+## Retornando os dados Json 
+Como a aplicação deseja saber apenas o maior e o menor de cada relatório, após ordenar o vetor ficar simples de saber, que no caso o maior será o objeto que estiver na última posição do vetor e o menor será o que estiver na primeira posição. Assim, a aplicação monta um HashMap com os dados do maior e do menor Objeto e calcula a média da idade ou do salário:
+```ruby
+public HashMap<String,Object>  ReportSalary(People[] people)
+    {
+
+        Employee test = new Employee();
+
+        this.map.put("smaller",people[0]);
+        this.map.put("bigger",people[people.length-1]);
+        this.map.put("average",(people[0].getEmployee_salary() + people[people.length-1].getEmployee_salary())/2);
+
+        return map;
+    }
+````
+
+# Referências
+
+https://sites.google.com/site/gson/gson-user-guide
+https://spring.io/guides/gs/rest-service/
+https://howtodoinjava.com/spring-boot2/resttemplate/spring-restful-client-resttemplate-example/
+https://attacomsian.com/blog/processing-json-spring-boot
+
 
 
  
